@@ -40,10 +40,7 @@ def update(request, pk):
         return redirect('/')
     
 def delete(request, pk):
-    get = Profile.objects.get(id=pk)
-    deleting = get.delete()
-    if deleting:
-        os.remove(get.profile.path)
-    get.save()
+    get = Profile.objects.filter(id=pk)
+    get.delete()
     messages.success(request, "Data has been deleted successfully!")
     return redirect('/')

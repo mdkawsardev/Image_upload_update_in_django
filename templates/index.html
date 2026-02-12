@@ -21,7 +21,7 @@
                 <label for="profile" class="form-label">Profile</label>
                 <input type="file" class="form-control" name="profile" id="profile">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
         </form>
         <table class="table mt-5">
             <thead>
@@ -38,7 +38,7 @@
                         <tr>
                             <td>{{all.id}}</td>
                             <td>{{all.name}}</td>
-                            <td><img src="{{all.profile.url}}" alt="{{all.name}}" class="w-25"></td>
+                            <td class="w-25"><img src="{{all.profile.url}}" alt="{{all.name}}" class="w-100"></td>
                             <td>
                                 <a href="{% url 'edit' all.id %}" class="btn btn-primary">Edit</a>
                                 <a href="{% url 'delete' all.id %}" class="btn btn-danger">Delete</a>
