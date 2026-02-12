@@ -40,7 +40,8 @@
                             <td>{{all.name}}</td>
                             <td><img src="{{all.profile.url}}" alt="{{all.name}}" class="w-25"></td>
                             <td>
-                                <a href="{% url 'edit' all.id %}">Edit</a>
+                                <a href="{% url 'edit' all.id %}" class="btn btn-primary">Edit</a>
+                                <a href="{% url 'delete' all.id %}" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}

@@ -38,3 +38,9 @@ def update(request, pk):
         update_data.save()
         messages.success(request, "Data has been updated!")
         return redirect('/')
+    
+def delete(request, pk):
+    get = Profile.objects.filter(id=pk)
+    get.delete()
+    messages.success(request, "Data has been deleted successfully!")
+    return redirect('/')
