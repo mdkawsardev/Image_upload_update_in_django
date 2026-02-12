@@ -36,7 +36,7 @@
                 {% if all_data %}
                     {% for all in all_data %}
                         <tr>
-                            <td>{{all.id}}</td>
+                            <td>{{forloop.counter}}</td>
                             <td>{{all.name}}</td>
                             <td class="w-25"><img src="{{all.profile.url}}" alt="{{all.name}}" class="w-100"></td>
                             <td>
