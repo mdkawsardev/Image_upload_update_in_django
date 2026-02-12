@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert text-center alert-success alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="container">
+        <h1>Upload a photo</h1>
+        <form action="{% url 'insert' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="profile" class="form-label">Profile</label>
+                <input type="file" class="form-control" name="profile" id="profile">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <table class="table mt-5">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Profile</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if all_data %}
+                    {% for all in all_data %}
+                        <tr>
+                            <td>{{all.id}}</td>
+                            <td>{{all.name}}</td>
+                            <td><img src="{{all.profile.url}}" alt="{{all.name}}" class="w-25"></td>
+                            <td>
+                                <a href="{% url 'edit' all.id %}">Edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td>No data</td>
+                        <td>No data</td>
+                        <td>No data</td>
+                        <td>No data</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock body %}

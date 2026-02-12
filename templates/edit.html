@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Edit{% endblock title %}
+{% block body %}
+    <div class="container">
+        <h1>Edit Data</h1>
+        {% for all in data %}
+        <form action="{% url 'update' all.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" value="{{all.name}}" name="name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="profile" class="form-label">Profile</label>
+                <input type="file" class="form-control" name="profile" id="profile">
+                <img src="{{all.profile.url}}" class="w-25" alt="">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+        {% endfor %}
+    </div>
+{% endblock body %}
